@@ -20,10 +20,19 @@ needs to be sent to the cartridge.
 
 //In the color cartridge, there are three rows, one for each color. They're next to eachother, so we need to take care
 //to grab the bits of image that actually are in the position of the nozzles.
-#define PRINTSPIDER_CMY_ROW_OFFSET 16
+#define PRINTSPIDER_COLOR_ROW_OFFSET 16
+
+//The actual nozzles for the color cart start around y=14
+#define PRINTSPIDER_COLOR_VERTICAL_OFFSET 14
 
 //In the mono cartridge, there are two rows of nozzles, slightly offset (in the X direction) from the other.
 #define PRINTSPIDER_BLACK_ROW_OFFSET 10
+
+//Number of nozzles in each row of color cartridge
+#define PRINTSPIDER_COLOR_NOZZLES_IN_ROW 84
+
+//Number of nozzles in each row of mono cartridge
+#define PRINTSPIDER_BLACK_NOZZLES_IN_ROW 168
 
 /*
 In the nozzle data array `l`, this enables the `p`'th nozzle from the top of the row of nozzles with color 

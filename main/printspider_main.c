@@ -599,15 +599,15 @@ void send_image_row_color(int pos) {
 	uint8_t nozdata[PRINTSPIDER_NOZDATA_SZ];
 	memset(nozdata, 0, PRINTSPIDER_NOZDATA_SZ);
 	for (int c=0; c<3; c++) {
-		for (int y=0; y<84; y++) {
-			uint8_t v=image_get_pixel(pos-c*PRINTSPIDER_CMY_ROW_OFFSET, y*2, c);
+		for (int y=0; y<PRINTSPIDER_COLOR_NOZZLES_IN_ROW; y++) {
+			uint8_t v=image_get_pixel(pos-c*PRINTSPIDER_COLOR_ROW_OFFSET, y*2, c);
 			//Note the v returned is 0 for black, 255 for the color. We need to invert that here as we're printing on
 			//white.
 			v=255-v;
 			//Random-dither. The chance of the nozzle firing is equal to (v/256).
 			if (v>(rand()&255)) {
 				//Note: The actual nozzles for the color cart start around y=14
-				printspider_fire_nozzle_color(nozdata, y+14, c);
+				printspider_fire_nozzle_color(nozdata, y+PRINTSPIDER_COLOR_VERTICAL_OFFSET, c);
 			}
 		}
 	}
@@ -619,7 +619,7 @@ void send_image_row_black(int pos) {
 	uint8_t nozdata[PRINTSPIDER_NOZDATA_SZ];
 	memset(nozdata, 0, PRINTSPIDER_NOZDATA_SZ);
 	for (int row=0; row<2; row++) {
-		for (int y=0; y<168; y++) {
+		for (int y=0; y<PRINTSPIDER_BLACK_NOZZLES_IN_ROW; y++) {
 			//We take anything but white in any color channel of the image to mean we want black there.
 			if (image_get_pixel(pos+row*PRINTSPIDER_BLACK_ROW_OFFSET, y, 0)!=0xff ||
 				image_get_pixel(pos+row*PRINTSPIDER_BLACK_ROW_OFFSET, y, 1)!=0xff ||
