@@ -11,7 +11,6 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include "rom/ets_sys.h"
 #include "esp_attr.h"
 #include <string.h>
 #include "printspider_genwaveform.h"

@@ -72,7 +72,7 @@ void printspider_select_waveform(enum printspider_buffer_filler_waveform_type_en
 void IRAM_ATTR printspider_buffer_filler_fn(void *buf, int len, void *arg) {
 	QueueHandle_t pixq=(QueueHandle_t)arg;
 	portBASE_TYPE high_priority_task_awoken = 0;
-		//Pre-clear waveform buffer, but only when needed.
+	//Pre-clear waveform buffer, but only when needed.
 	if (clear_waveform_ct) {
 		clear_waveform_ct--;
 		memset(buf, 0, len);

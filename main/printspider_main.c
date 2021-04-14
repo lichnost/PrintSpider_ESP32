@@ -25,8 +25,8 @@
    If you'd rather not, just change the below entries to strings with
    the config you want - ie #define WIFI_SSID "mywifissid"
 */
-#define WIFI_SSID      "linux-core-rulez"
-#define WIFI_PASSWORD  "linux-core12354"
+#define WIFI_SSID      ""
+#define WIFI_PASSWORD  ""
 #define WIFI_MAXIMUM_RETRY  20
 
 /* FreeRTOS event group to signal when we are connected*/
